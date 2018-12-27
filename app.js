@@ -1,9 +1,19 @@
 const mongoose = require('mongoose');
-
 const express = require("express");
+const users = require("./routes/api/users");
+const tweets = require("./routes/api/tweets");
+const bodyParser = requrie('body-parser');
+
+
 const app = express();
 
 app.get("/", (req, res) => res.send("Hello Another world"));
+app.use("/api/users", users);
+app.use("/api/tweets", tweets);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
 
 const db = require('./config/keys').mongoURI;
 

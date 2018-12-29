@@ -2,16 +2,23 @@ const mongoose = require('mongoose');
 const express = require("express");
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
-const bodyParser = requrie('body-parser');
-
+const bodyParser = require('body-parser');
+const User = require('./models/User')
 
 const app = express();
 
-app.get("/", (req, res) => res.send("Hello Another world"));
+app.get("/", (req, res) => {
+  const user = new User({
+    handle: "jim", 
+    email: "jim@gmail.com", 
+    password: "password123"
+  })
+  user.save();
+  res.send("Hello Another world")});
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/tweets", tweets);
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 
 

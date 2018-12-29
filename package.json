@@ -4,8 +4,10 @@
   "description": "first-project",
   "main": "app.js",
   "scripts": {
+    "server:debug": "nodemon --inspect app.js",
     "start": "node app.js",
     "server": "nodemon app.js"
+    
   },
   "author": "markk",
   "license": "ISC",
